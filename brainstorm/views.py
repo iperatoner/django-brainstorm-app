@@ -8,10 +8,16 @@ from brainstorm.models import Idea, IdeaComment
 from brainstorm.forms import IdeaForm, IdeaCommentForm
 from brainstorm.util import voted_idea, set_voted
 
+try:
+    from settings import TEMPLATE_NAME
+except ImportError:
+    TEMPLATE_NAME = ''
+
 # Ordering possibilities
 IDEA_ORDER_BY = {
     'latest' : 'date_added',
     'oldest' : '-date_added',
+    'highest-rated' : ('-promoted','-demoted'),
     'az' : 'subject__name',
     'za' : '-subject__name'
 }
@@ -26,7 +32,17 @@ def list_all_ideas(request, orderby='latest'):
     else:
         model_orderby = IDEA_ORDER_BY[orderby]
         
-    ideas = Idea.objects.all().order_by(model_orderby)
+    if type(model_orderby) is tuple:
+        call_string = 'ideas = Idea.objects.all().order_by('
+        for i in xrange(len(model_orderby)):
+            call_string += 'model_orderby[%d],' % i
+        
+        call_string += ')'
+        call_string = call_string.replace(',)', ')')
+        exec call_string
+       
+    else:
+        ideas = Idea.objects.all().order_by(model_orderby)
         
     data = {
         'ideas' : ideas,
@@ -34,7 +50,7 @@ def list_all_ideas(request, orderby='latest'):
     }
     
     return render_to_response(
-        'brainstorm/idea-list.html',
+        TEMPLATE_NAME + 'brainstorm/idea-list.html',
         data,
         context_instance = RequestContext(request),
     )
@@ -55,7 +71,7 @@ def show_idea(request,idea_id, form=False):
     }
 
     return render_to_response(
-        'brainstorm/show.html',
+        TEMPLATE_NAME + 'brainstorm/show.html',
         data,
         context_instance = RequestContext(request),
     )
@@ -84,7 +100,7 @@ def create_idea(request):
     }
 
     return render_to_response(
-        'brainstorm/edit.html',
+        TEMPLATE_NAME + 'brainstorm/edit.html',
         data,
         context_instance = RequestContext(request),
     )
@@ -127,7 +143,7 @@ def edit_idea(request, idea_id, edit_hash):
     }
 
     return render_to_response(
-        'brainstorm/edit.html',
+        TEMPLATE_NAME + 'brainstorm/edit.html',
         data,
         context_instance = RequestContext(request),
     )

@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//DE" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="en">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+        <title>{% block title %}Cream Brainstorm{% endblock %}</title>
+
+
+        <link rel="stylesheet" type="text/css" media="screen" 
+              href="{{ MEDIA_URL }}cream-brainstorm/css/reset.css" />
+              
+        <link rel="stylesheet" type="text/css" media="screen"
+              href="{{ MEDIA_URL }}cream-brainstorm/css/text.css" />
+              
+        <link rel="stylesheet" type="text/css" media="screen"
+              href="{{ MEDIA_URL }}cream-brainstorm/css/960_24_col.css" />
+              
+        <link rel="stylesheet" type="text/css" media="screen"
+              href="{{ MEDIA_URL }}cream-brainstorm/css/style.css" />
+
+        {% block extra_head %}{% endblock %}
+    </head>
+
+    <body>
+        <div class="container_24" id="main-wrapper">
+            <div class="grid_24" id="logo-wrapper">
+                <a href="{% url bs_list_all %}">
+                    <img src="{{ MEDIA_URL }}cream-brainstorm/images/logo.png" 
+                     alt="Cream Brainstorm" id="brainstorm-logo" />
+                </a>
+            </div>
+            <div class="clear"></div>
+            <!-- end grid_24 #logo-wrapper -->
+
+            <div class="grid_24" id="content-wrapper">
+            
+                <div class="grid_24 alpha omega" id="top-bar">
+                    {% block top_bar %}{% endblock %}
+                </div>
+                <div class="clear"></div>
+                <!-- end grid_24 #top-bar -->
+                
+                {% block site_content %}{% endblock %}
+                
+            </div>
+            <div class="clear"></div>
+            <!-- end grid_24 #content-wrapper -->
+        </div>
+    </body>
+
+</html>

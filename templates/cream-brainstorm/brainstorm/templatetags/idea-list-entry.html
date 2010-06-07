@@ -1,0 +1,30 @@
+<div class="grid_24 alpha omega idea-list-entry" id="idea-{{ idea.id }}">
+        
+    <div class="grid_3 push_1 alpha column" id="idea-{{ idea.id }}-rating">
+        <div class="middlizer">
+            <div class="rating">
+                <div class="promoted" style="width: {{ promoted_pixels }}px;"></div>
+                <div class="demoted" style="width: {{ demoted_pixels }}px;"></div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <!-- end grid_3 #idea-{{ idea.id }}-rating -->
+        
+    <div class="grid_16 push_1 column" id="idea-{{ idea.id }}-shortdescr">
+        <div class="middlizer">
+            <a href="{% url bs_show idea.id %}">{{ idea.short_description }}</a>
+        </div>
+    </div>
+    <!-- end grid_16 #idea-{{ idea.id }}-shortdescr -->
+        
+    <div class="grid_3 push_1 omega column" id="idea-{{ idea.id }}-comments">
+        <div class="middlizer">{{ idea.comment_set.count }}</div>
+    </div>
+    <!-- end grid_3 #idea-{{ idea.id }}-comments -->
+    
+    <div class="clear"></div>
+    
+</div>
+<div class="clear"></div>
+<!-- end grid_24 #idea-{{ idea.id }} -->

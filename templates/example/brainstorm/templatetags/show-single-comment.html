@@ -1,0 +1,14 @@
+<div class="comment" style="border-bottom: 1px solid #cfcfcf; padding: 10px;">
+    <p>
+        <strong>Author:</strong> 
+        {% if comment.author_website %}
+            <a href="{{ comment.author_website }}">{{ comment.author_name }}</a>
+        {% else %}
+            {{ comment.author_name }}
+        {% endif %}
+        <br />
+        
+        {{ comment.date_added|date:"d.m. H:i" }}
+    </p>
+    <p>{{ comment.text }}</p>
+</div>

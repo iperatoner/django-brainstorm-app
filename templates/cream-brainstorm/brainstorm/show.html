@@ -1,0 +1,47 @@
+{% extends "cream-brainstorm/base.html" %}
+{% load idea_tags %}
+{% load comment_tags %}
+{% load idea_tags %}
+
+{% block title %}Idee - {{ block.super }}{% endblock %}
+
+{% block top_bar %}
+    <div class="grid_3 push_1 alpha column" id="rating-column">
+        <div class="middlizer">Bewertung</div>
+    </div>
+    <!-- end grid_3 #rating-column -->
+    
+    <div class="grid_19 push_1 column" id="shortdescr-column">
+        <div class="middlizer"><strong>{{ idea.short_description }}</strong></div>
+    </div>
+    <!-- end grid_16 #shortdescr-column -->
+    
+    <div class="clear"></div>
+{% endblock %}
+
+{% block site_content %}
+
+    <div class="grid_24 alpha omega plain-content" id="idea-{{ idea.id }}">
+    
+        {% show_idea idea %}
+    
+    </div>
+    <div class="clear"></div>
+    <!-- end grid_24 #idea-{{ idea.id }} -->
+
+{% endblock %}
+
+<!--
+<h2 name="comments" id="comments">Comments</h2>
+{% show_idea_comments idea %}
+
+
+<h2 name="addcomment" id="addcomment">Add a comment...</h2>
+
+<form method="post" action="{% url bs_add_comment idea.id %}#addcomment">
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit comment" />
+</form>
+-->

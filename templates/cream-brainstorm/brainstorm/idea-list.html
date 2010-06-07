@@ -1,0 +1,42 @@
+{% extends "cream-brainstorm/base.html" %}
+{% load idea_tags %}
+
+{% block title %}&Uuml;bersicht - {{ block.super }}{% endblock %}
+
+{% if ideas %}
+    {% block top_bar %}
+            <div class="grid_3 push_1 alpha column" id="rating-column">
+                <div class="middlizer">Bewertung</div>
+            </div>
+            <!-- end grid_3 #rating-column -->
+            
+            <div class="grid_16 push_1 column" id="shortdescr-column">
+                <div class="middlizer">Kurzbeschreibung</div>
+            </div>
+            <!-- end grid_16 #shortdescr-column -->
+            
+            <div class="grid_3 push_1 omega column" id="comment-column">
+                <div class="middlizer">Kommentare</div>
+            </div>
+            <!-- end grid_3 #comment-column -->
+            
+            <div class="clear"></div>
+    {% endblock %}
+
+    {% block site_content %}
+    
+        <div class="grid_24 alpha omega" id="idea-list">
+                    
+            {% for i in ideas %}
+                {% idea_list_entry i %}
+            {% endfor %}
+
+        </div>
+        <div class="clear"></div>
+        <!-- end grid_24 #idea-list-->
+
+    {% endblock %}
+    
+{% else %}
+    There are no ideas yet. Create one...
+{% endif %}

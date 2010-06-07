@@ -1,9 +1,14 @@
 from django import template
 
+try:
+    from settings import TEMPLATE_NAME
+except ImportError:
+    TEMPLATE_NAME = ''
+
 register = template.Library()
 
 @register.inclusion_tag(
-    'brainstorm/templatetags/show-idea-comments.html',
+    TEMPLATE_NAME + 'brainstorm/templatetags/show-idea-comments.html',
     takes_context=True
 )
 def show_idea_comments(context, idea):
@@ -19,7 +24,7 @@ def show_idea_comments(context, idea):
 
     
 @register.inclusion_tag(
-    'brainstorm/templatetags/show-single-comment.html',
+    TEMPLATE_NAME + 'brainstorm/templatetags/show-single-comment.html',
     takes_context=True
 )
 def show_single_comment(context, comment):

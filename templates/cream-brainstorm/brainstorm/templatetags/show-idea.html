@@ -1,0 +1,34 @@
+<div class="grid_3 push_1 alpha column" id="idea-{{ idea.id }}-rating">
+    <div class="rating">
+        <div class="promoted" style="width: {{ promoted_pixels }}px;"></div>
+        <div class="demoted" style="width: {{ demoted_pixels }}px;"></div>
+        <div class="clear"></div>
+    </div>
+    <div class="number-votes">
+        {% with idea.promoted|add:idea.demoted as votes %}
+            0{{ votes }}
+        {% endwith %}
+    </div>
+    {% if has_voted %}
+    {% else %}
+        <div class="rating-icons">
+            <a href="{% url bs_dislike idea.id %}">
+                <img src="{{ MEDIA_URL }}cream-brainstorm/images/thumbdown.png" 
+                     alt="demote" />
+            </a>
+            <a href="{% url bs_like idea.id %}">
+                <img src="{{ MEDIA_URL }}cream-brainstorm/images/thumbup.png" 
+                     alt="promote" />
+            </a>
+        </div>
+    {% endif %}
+</div>
+<!-- end grid_3 #idea-{{ idea.id }}-rating -->
+
+<div class="grid_19 push_1 column" id="idea-{{ idea.id }}-descr">
+    {{ idea.long_description }}
+</div>
+<!-- end grid_16 #idea-{{ idea.id }}-descr -->
+
+<div class="clear"></div>
+

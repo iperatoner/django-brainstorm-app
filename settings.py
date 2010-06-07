@@ -85,6 +85,9 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, 'templates'),
 )
 
+# name of the template to use (with a trailing slash!)
+TEMPLATE_NAME = 'cream-brainstorm/'
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
