@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load idea_tags %}
+{% load comment_tags %}
+
+{% block title %}{{ idea.short_description }} - Idea - {{ block.super }}{% endblock %}
+
+{% block page_title %}{{ idea.short_description }}{% endblock %}
+
+{% block main_content %}
+{% show_idea idea %}
+<br />
+<hr />
+
+<h2 name="comments" id="comments">Comments</h2>
+{% show_idea_comments idea %}
+
+
+<h2 name="addcomment" id="addcomment">Add a comment...</h2>
+
+<form method="post" action="{% url bs_add_comment idea.id %}#addcomment">
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit comment" />
+</form>
+
+{% endblock %}

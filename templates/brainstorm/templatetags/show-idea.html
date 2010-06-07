@@ -1,0 +1,12 @@
+<p><strong>Added:</strong> {{ idea.date_added }}</p>
+<p><strong>Short description:</strong> {{ idea.short_description }}</p>
+<p><strong>Description:</strong> {{ idea.long_description }}</p>
+<p><strong>Likes:</strong></p> {{ idea.promoted }}
+<p><strong>Dislikes:</strong></p> {{ idea.demoted }}<br /><br />
+
+{% if has_voted %}
+    You have {{ voted_how }} this idea!
+{% else %}
+    <a href="{% url bs_like idea.id %}">Like</a>
+    <a href="{% url bs_dislike idea.id %}">Dislike</a>
+{% endif %}

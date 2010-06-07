@@ -1,0 +1,5 @@
+<tr>
+    <td>Likes: {{ idea.promoted }}<br />Dislikes: {{ idea.demoted }}</td>
+    <td><a href="{% url bs_show idea.id %}">{{ idea.short_description }}</a></td>
+    <td>{{ idea.comment_set.count }}</td>
+</tr>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load idea_tags %}
+
+{% block title %}All ideas - {{ block.super }}{% endblock %}
+
+{% block main_content %}
+
+{% if ideas %}
+    <table cellspacing="0" cellpadding="0" width="100%">
+        <tr>
+            <td style="padding-bottom: 10px;"><strong>Likes/dislikes</strong></td>
+            <td style="padding-bottom: 10px;"><strong>Short description</strong></td>
+            <td style="padding-bottom: 10px;"><strong>Comments</strong></td>
+        </tr>
+        {% for i in ideas %}
+            {% idea_list_entry i %}
+        {% endfor %}
+    </table>
+{% else %}
+    There are no ideas yet. Create one...
+{% endif %}
+{% endblock %}

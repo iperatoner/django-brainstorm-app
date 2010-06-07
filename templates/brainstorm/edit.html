@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Edit homework - {{ block.super }}{% endblock %}
+{% block page_title %}Edit{% endblock %}
+
+{% block main_content %}
+    <form method="post" 
+        {% if new %}
+            action="{% url bs_create %}"
+        {% else %}
+            action="{% url bs_edit idea.id %}"
+        {% endif %}
+    >
+        <table>
+            {{ form.as_table }}
+        </table>
+        
+        {% if next_view %}
+            <input type="hidden" name="next_view" value="{{ next_view }}" />
+        {% endif %}
+    
+        <input type="submit" value="Save idea" />
+    </form>
+{% endblock %}
