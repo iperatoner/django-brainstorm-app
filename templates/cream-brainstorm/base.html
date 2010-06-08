@@ -25,11 +25,23 @@
 
     <body>
         <div class="container_24" id="main-wrapper">
-            <div class="grid_24" id="logo-wrapper">
-                <a href="{% url bs_list_all %}">
-                    <img src="{{ MEDIA_URL }}cream-brainstorm/images/logo.png" 
-                     alt="Cream Brainstorm" id="brainstorm-logo" />
-                </a>
+            <div class="grid_24" id="top-wrapper">
+                
+                
+                <div class="grid_6 alpha">
+                    <a href="{% url bs_list_all %}">
+                        <img src="{{ MEDIA_URL }}cream-brainstorm/images/logo.png" 
+                         alt="Cream Brainstorm" id="brainstorm-logo" />
+                    </a>
+                </div>
+                
+                <div class="grid_11 suffix_7 omega" id="create-wrapper">
+                    <a href="{% url bs_create %}">
+                        <input type="button" value="Ich habe eine Idee!" id="new-idea-button" />
+                    </a>
+                </div>
+                
+                <div class="clear"></div>
             </div>
             <div class="clear"></div>
             <!-- end grid_24 #logo-wrapper -->

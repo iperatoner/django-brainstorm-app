@@ -7,14 +7,52 @@ a {
     text-decoration: none;
 }
 
-div#logo-wrapper {
+#brainstorm-logo {
+    padding-top: 8px;
+    padding-bottom: 4px;
+}
+
+#top-wrapper {
+    margin-top: 17px;
+    margin-bottom: 20px;
+}
+
+div#create-wrapper {
     text-align: center;
 }
 
-    div#logo-wrapper img#brainstorm-logo {
-        margin-top: 8px;
-        margin-bottom: 6px;
+    #new-idea-button {
+        padding: 15px;
+        font-size: 15pt;
+        
+        margin: 5px;
+        color: #0a0a0a;
+
+        border-radius: 4px;
+
+        -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, .2)/*0px 0px 4px 0px rgba(0, 0, 0, .4)*/, inset 0px 1px 1px -1px rgba(256, 256, 256, 1), inset 0px -1px 0px 0px rgba(0, 0, 0, .05), inset 1px 0px 1px -1px rgba(256, 256, 256, .15), inset -1px 0px 1px -1px rgba(256, 256, 256, .15);
+        
+        text-shadow: 0px 1px 0px rgba(256, 256, 256, .24);
+
+        background: -webkit-gradient(linear, left -10%, left 70%, to(rgba(180, 180, 180, .45)), from(rgba(245, 245, 245, .5)));
+        
+        border: 1px solid green;
+        background-color: #008811;
+        
+        color: #ffffff;
+        
+        cursor: pointer;
     }
+
+        #new-idea-button:hover {
+            background: -webkit-gradient(linear, left -10%, left 70%, to(rgba(200, 200, 200, .45)), from(rgba(255, 255, 255, .5)));
+            background-color: #008811;
+        }
+
+        #new-idea-button:active {
+            background: -webkit-gradient(linear, left -10%, left 70%, to(rgba(245, 245, 245, .5)), from(rgba(180, 180, 180, .45)));
+            background-color: #008811;
+        }
 
 div#content-wrapper {
     background: #ffffff;
