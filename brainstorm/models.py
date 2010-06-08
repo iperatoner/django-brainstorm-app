@@ -18,7 +18,7 @@ class Idea(models.Model):
     demoted = models.IntegerField()
     
     author_name = models.CharField(max_length=128)
-    author_email = models.EmailField()
+    author_email = models.EmailField(blank=True)
     author_website = models.CharField(blank=True, max_length=128)
     
     date_added = models.DateTimeField(default=datetime.now)
@@ -39,7 +39,7 @@ class IdeaComment(models.Model):
     idea = models.ForeignKey(Idea, related_name='comment_set')
     
     author_name = models.CharField(max_length=128)
-    author_email = models.EmailField()
+    author_email = models.EmailField(blank=True)
     author_website = models.CharField(blank=True, max_length=128)
     
     text = models.TextField()

@@ -28,20 +28,7 @@
         
         <div class="grid_19 push_1 column common-form" id="new-idea-form">
             
-            <form method="post" action="{% url bs_create %}">
-            
-                {{ form.author_name.errors }}
-                <label for="id_author_name"><h3>Name:</h3></label>
-                {{ form.author_name }}
-                
-                {{ form.author_email.errors }}
-                <label for="id_author_email"><h3>E-Mail:</h3></label>
-                {{ form.author_email }}
-                
-                {{ form.author_website.errors }}
-                <label for="id_author_website"><h3><span class="optional-field">Website (optional):</span></h3></label>
-                {{ form.author_website }}
-                
+            <form method="post" action="{% url bs_create %}">                
                 
                 {{ form.short_description.errors }}
                 <label for="id_short_description"><h3>Kurzbeschreibung der Idee:</h3></label>
@@ -51,7 +38,20 @@
                 {{ form.long_description.errors }}
                 <label for="id_long_description"><h3>Ausf&uuml;hrliche Beschreibung:</h3></label>
                 {{ form.long_description }}
-
+            
+                {{ form.author_name.errors }}
+                <label for="id_author_name"><h3>Name:</h3></label>
+                {{ form.author_name }}
+                
+                {{ form.author_email.errors }}
+                <label for="id_author_email"><h3><span class="optional-field">E-Mail: (optional)</span></h3></label>
+                {{ form.author_email }}
+                
+                {{ form.author_website.errors }}
+                <label for="id_author_website"><h3><span class="optional-field">Website (optional):</span></h3></label>
+                {{ form.author_website }}
+                
+                <br /><br />
                 <input type="submit" value="Idee einsenden" />
                 
             </form>
