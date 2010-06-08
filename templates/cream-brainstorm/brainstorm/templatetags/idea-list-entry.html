@@ -19,7 +19,11 @@
     <!-- end grid_16 #idea-{{ idea.id }}-shortdescr -->
         
     <div class="grid_3 push_1 omega column" id="idea-{{ idea.id }}-comments">
-        <div class="middlizer">{{ idea.comment_set.count }}</div>
+        <div class="middlizer">
+            <a href="{% url bs_show idea.id %}#comments">
+                {{ idea.comment_set.count }}
+            </a>
+        </div>
     </div>
     <!-- end grid_3 #idea-{{ idea.id }}-comments -->
     

@@ -1,7 +1,77 @@
-{% extends "base.html" %}
+{% extends "cream-brainstorm/base.html" %}
 
-{% block title %}Edit homework - {{ block.super }}{% endblock %}
-{% block page_title %}Edit{% endblock %}
+{% block title %}Erstellen - {{ block.super }}{% endblock %}
+
+{% block top_bar %}
+                
+    <div class="grid_3 push_1 alpha column" id="rating-column">
+        <div class="middlizer"></div>
+    </div>
+    <!-- end grid_3 #rating-column -->
+    
+    <div class="grid_19 push_1 column" id="shortdescr-column">
+        <div class="middlizer"><strong>Idee hinzuf&uuml;gen...</strong></div>
+    </div>
+    <!-- end grid_16 #shortdescr-column -->
+    
+    <div class="clear"></div>
+    
+{% endblock %}
+
+{% block site_content %}
+                
+    <div class="grid_24 alpha omega plain-content" id="new-idea">
+    
+        <div class="grid_3 push_1 alpha column">
+        </div>
+        <!-- end grid_3 -->
+        
+        <div class="grid_19 push_1 column common-form" id="new-idea-form">
+            
+            <form method="post" action="{% url bs_create %}">
+            
+                {{ form.author_name.errors }}
+                <label for="id_author_name"><h3>Name:</h3></label>
+                {{ form.author_name }}
+                
+                {{ form.author_email.errors }}
+                <label for="id_author_email"><h3>E-Mail:</h3></label>
+                {{ form.author_email }}
+                
+                {{ form.author_website.errors }}
+                <label for="id_author_website"><h3><span class="optional-field">Website (optional):</span></h3></label>
+                {{ form.author_website }}
+                
+                
+                {{ form.short_description.errors }}
+                <label for="id_short_description"><h3>Kurzbeschreibung der Idee:</h3></label>
+                <input type="text" class="wider" 
+                name="{{ form.short_description.html_name }}" id="id_short_description" />
+                
+                {{ form.long_description.errors }}
+                <label for="id_long_description"><h3>Ausf&uuml;hrliche Beschreibung:</h3></label>
+                {{ form.long_description }}
+
+                <input type="submit" value="Idee einsenden" />
+                
+            </form>
+        </div>
+        <!-- end grid_16 #new-idea-form -->
+        
+        <div class="clear"></div>
+        
+    </div>
+    <div class="clear"></div>
+    <!-- end grid_24 #new-idea -->
+
+{% endblock %}
+
+
+
+
+
+
+
 
 {% block main_content %}
     <form method="post" 

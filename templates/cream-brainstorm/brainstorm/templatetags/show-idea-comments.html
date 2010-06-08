@@ -1,5 +1,29 @@
 {% load comment_tags %}
 
 {% for c in comments %}
-    {% show_single_comment c %}
+
+    <div class="grid_12 prefix_1 suffix_1 alpha omega comment" id="comment-{{ c.id }}">
+    
+        <h3>
+            {% with forloop.counter as fc %}
+              <a href="#comment_{{ fc }}" class="comment-number" 
+                 id="comment_{{ fc }}" name="comment_{{ fc }}">#{{ fc }}
+              </a>
+            {% endwith %}
+            
+            {% if c.author_website %}
+                <a href="{{ c.author_website }}">{{ c.author_name }}</a>
+            {% else %}
+                {{ c.author_name }}
+            {% endif %}
+        </h3>
+        <span class="meta">am {{ c.date_added|date:"d.m.Y \u\m H:i" }}</span>
+        <p class="comment-text">
+            {{ c.text }}
+        </p>
+        
+    </div>
+    <div class="clear"></div>
+    <!-- end grid_12 #comment-{{ c.id }} -->
+    
 {% endfor %}

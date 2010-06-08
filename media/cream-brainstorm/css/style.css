@@ -144,7 +144,7 @@ div.comment {
         color: #9f9584;
     }
 
-    div.comment span.comment-number {
+    div.comment a.comment-number {
         position: absolute;
         left: 9px;
         color: #9f9584;
@@ -175,6 +175,8 @@ input[type=text], textarea {
     input[type=text]:focus, textarea:focus {
         border-color: #ada392;
         
+        box-shadow: 0px 0px 8px #e3d9c8;
+        -moz-box-shadow: 0px 0px 8px #e3d9c8;
         -webkit-box-shadow: 0px 0px 8px #e3d9c8;
     }
 
@@ -206,3 +208,16 @@ div.common-form textarea {
 span.optional-field {
     color: #9f9584;
 }
+
+ul.errorlist {
+    list-style-type: none;
+    margin-bottom: -10px;
+    margin-top: 30px;
+}
+    
+    ul.errorlist li {
+        padding: 5px;
+        margin-left: -5px;
+        background: #ffede5;
+        font-size: .9em;
+    }

@@ -1,7 +1,6 @@
 {% extends "cream-brainstorm/base.html" %}
 {% load idea_tags %}
 {% load comment_tags %}
-{% load idea_tags %}
 
 {% block title %}Idee - {{ block.super }}{% endblock %}
 
@@ -11,10 +10,15 @@
     </div>
     <!-- end grid_3 #rating-column -->
     
-    <div class="grid_19 push_1 column" id="shortdescr-column">
+    <div class="grid_16 push_1 column" id="shortdescr-column">
         <div class="middlizer"><strong>{{ idea.short_description }}</strong></div>
     </div>
     <!-- end grid_16 #shortdescr-column -->
+    
+    <div class="grid_3 push_1 column" id="author-column">
+        <div class="middlizer">Autor</div>
+    </div>
+    <!-- end grid_3 #author-column -->
     
     <div class="clear"></div>
 {% endblock %}
@@ -28,20 +32,61 @@
     </div>
     <div class="clear"></div>
     <!-- end grid_24 #idea-{{ idea.id }} -->
+    
+    
+    <div class="grid_14 push_5" id="comments">
+    
+        <h2 name="comments">
+            <a href="#comments">
+                {{ idea.comment_set.count }} Kommentar{{ idea.comment_set.count|pluralize:"e" }}
+            </a>
+        </h2>
+        
+        <div class="grid_14 alpha omega" id="comment-wrapper">
+        
+            {% show_idea_comments idea %}
+        
+        </div>
+        <div class="clear"></div>
+        <!-- end grid_12 #comment-wrapper -->
+
+        <div class="grid_12 prefix_1 suffix_1" id="comment-form">
+            <h2 name="addcomment" id="addcomment">Kommentieren...</h2>
+
+            <div class="grid_12 alpha omega common-form" id="comment-form-wrapper">
+            
+                <form method="post" action="{% url bs_add_comment idea.id %}#addcomment">
+                    {{ form.author_name.errors }}
+                    <label for="id_author_name"><h3>Name:</h3></label>
+                    {{ form.author_name }}
+                    
+                    {{ form.author_email.errors }}
+                    <label for="id_author_email"><h3>E-Mail:</h3></label>
+                    {{ form.author_email }}
+                                        
+                    {{ form.author_website.errors }}
+                    <label for="id_author_website"><h3><span class="optional-field">Website (optional):</span></h3></label>
+                    {{ form.author_website }}
+                           
+                    {{ form.text.errors }}             
+                    <label for="id_text"><h3>Kommentar:</h3></label>
+                    {{ form.text }}
+                    
+                    <input type="submit" value="Kommentar senden" />
+                </form>
+                
+            </div>
+        <div class="clear"></div>
+        <!-- end grid_12 #comment-form-wrapper -->
+            
+            
+        </div>
+        <div class="clear"></div>
+        <!-- end grid_12 #comment-form -->
+        
+    </div>
+    <div class="clear"></div>
+    <!-- end grid_12 #comments -->
+                
 
 {% endblock %}
-
-<!--
-<h2 name="comments" id="comments">Comments</h2>
-{% show_idea_comments idea %}
-
-
-<h2 name="addcomment" id="addcomment">Add a comment...</h2>
-
-<form method="post" action="{% url bs_add_comment idea.id %}#addcomment">
-    <table>
-        {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit comment" />
-</form>
--->

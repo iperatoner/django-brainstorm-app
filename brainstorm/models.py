@@ -19,7 +19,7 @@ class Idea(models.Model):
     
     author_name = models.CharField(max_length=128)
     author_email = models.EmailField()
-    author_website = models.URLField(blank=True)
+    author_website = models.CharField(blank=True, max_length=128)
     
     date_added = models.DateTimeField(default=datetime.now)
     
@@ -40,7 +40,7 @@ class IdeaComment(models.Model):
     
     author_name = models.CharField(max_length=128)
     author_email = models.EmailField()
-    author_website = models.URLField(blank=True)
+    author_website = models.CharField(blank=True, max_length=128)
     
     text = models.TextField()
     date_added = models.DateTimeField(default=datetime.now)

@@ -1,3 +1,5 @@
+{% load number_utils %}
+
 <div class="grid_3 push_1 alpha column" id="idea-{{ idea.id }}-rating">
     <div class="rating">
         <div class="promoted" style="width: {{ promoted_pixels }}px;"></div>
@@ -6,7 +8,7 @@
     </div>
     <div class="number-votes">
         {% with idea.promoted|add:idea.demoted as votes %}
-            0{{ votes }}
+            {{ votes|put_zero_before }}
         {% endwith %}
     </div>
     {% if has_voted %}
@@ -25,10 +27,19 @@
 </div>
 <!-- end grid_3 #idea-{{ idea.id }}-rating -->
 
-<div class="grid_19 push_1 column" id="idea-{{ idea.id }}-descr">
+<div class="grid_16 push_1 column" id="idea-{{ idea.id }}-descr">
     {{ idea.long_description }}
 </div>
 <!-- end grid_16 #idea-{{ idea.id }}-descr -->
+
+<div class="grid_3 push_1 column" id="idea-{{ idea.id }}-author">
+    {% if idea.author_website %}
+        <a href="{{ idea.author_website }}">{{ idea.author_name }}</a>
+    {% else %}
+        {{ idea.author_name }}
+    {% endif %}
+</div>
+<!-- end grid_3 #idea-{{ idea.id }}-author -->
 
 <div class="clear"></div>
 
